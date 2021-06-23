@@ -1,5 +1,7 @@
 package pl.coderslab.charity.entity;
 
+import lombok.RequiredArgsConstructor;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table
+@Table @RequiredArgsConstructor
 public class Category {
 
     @Id
@@ -17,5 +19,7 @@ public class Category {
 
     @Column(nullable = false)
     private String name;
+
+
 
 }
