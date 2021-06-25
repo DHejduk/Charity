@@ -1,5 +1,6 @@
 package pl.coderslab.charity.entity;
 
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
 import javax.persistence.Column;
@@ -16,7 +17,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
-@RequiredArgsConstructor
+@Data
 @Entity
 @Table
 public class Donation {
