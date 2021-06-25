@@ -1,13 +1,17 @@
 package pl.coderslab.charity.entity;
 
+import lombok.Data;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.List;
 
-@Entity
+@Entity @Data
 @Table
 public class Institution {
 
@@ -19,5 +23,8 @@ public class Institution {
     private String name;
 
     private String description;
+
+    @OneToMany(mappedBy = "institution")
+    private List<Donation> donations;
 
 }

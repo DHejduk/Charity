@@ -1,5 +1,6 @@
 package pl.coderslab.charity.entity;
 
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
 import javax.persistence.Column;
@@ -7,10 +8,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-
+import java.util.List;
+@Data
 @Entity
-@Table @RequiredArgsConstructor
+@Table
+
 public class Category {
 
     @Id
@@ -20,6 +24,7 @@ public class Category {
     @Column(nullable = false)
     private String name;
 
-
+    @ManyToMany(mappedBy = "categories")
+    private List<Donation> donations;
 
 }
