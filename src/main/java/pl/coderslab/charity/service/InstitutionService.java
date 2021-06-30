@@ -4,8 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import pl.coderslab.charity.entity.Institution;
-import pl.coderslab.charity.entity.InstitutionDto;
+import pl.coderslab.charity.model.entity.Institution;
+import pl.coderslab.charity.model.dto.InstitutionDto;
 import pl.coderslab.charity.repository.InstitutionRepository;
 
 import java.util.ArrayList;
@@ -26,8 +26,16 @@ public class InstitutionService {
 
         List<InstitutionDto> x = new ArrayList<>();
         for (Institution i : allInstitutions){
-            x.add(new InstitutionDto(i.getName(), i.getDescription()));
+            x.add(new InstitutionDto(i.getId(), i.getName(), i.getDescription()));
         }
+
+//
+//        institutionRepository.findAllInstitutions().stream()
+//                .map((e,s)->{e.getName()})
+
+
+
+
         return x;
     }
 }

@@ -1,4 +1,4 @@
-package pl.coderslab.charity.entity;
+package pl.coderslab.charity.model.entity;
 
 import lombok.Data;
 
@@ -7,13 +7,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import java.util.List;
-
-@Entity @Data
+@Data
+@Entity
 @Table
-public class Institution {
+
+public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,9 +23,7 @@ public class Institution {
     @Column(nullable = false)
     private String name;
 
-    private String description;
-
-    @OneToMany(mappedBy = "institution")
+    @ManyToMany(mappedBy = "categories")
     private List<Donation> donations;
 
 }
