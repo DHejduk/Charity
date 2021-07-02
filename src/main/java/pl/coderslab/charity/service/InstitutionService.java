@@ -10,6 +10,7 @@ import pl.coderslab.charity.repository.InstitutionRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -33,9 +34,12 @@ public class InstitutionService {
 //        institutionRepository.findAllInstitutions().stream()
 //                .map((e,s)->{e.getName()})
 
-
-
-
         return x;
     }
+
+    public Institution findInstitution(String id){
+        Optional<Institution> byId = institutionRepository.findById(Long.valueOf(id));
+        return byId.get();
+    }
+
 }
