@@ -78,20 +78,15 @@
     <div class="form--steps-container">
         <div class="form--steps-counter">Krok <span>1</span>/4</div>
 
-        <form:form action="form-confirmation.html" method="post" modelAttribute="donationDto">
+        <form:form action="/donate" method="post" modelAttribute="donationDto">
             <!-- STEP 1: class .active is switching steps -->
             <div data-step="1" class="active">
                 <h3>Zaznacz co chcesz oddać:</h3>
                 <c:forEach items="${allCategories}" var="category">
                     <div class="form-group form-group--checkbox">
                         <label>
-                            <form:input
+                            <form:checkbox cssClass="checkbox" name="categories" path="category" value="${category.id}"/>
 
-                                    name="categories"
-                                    path="category"
-                                    items="${allCategories}"
-                            />
-                            <span class="checkbox"></span>
                             <span class="description">${category.name}</span>
                         </label>
                     </div>
@@ -127,17 +122,17 @@
                 <c:forEach items="${allInstitutions}" var="institution">
                     <div class="form-group form-group--checkbox">
                         <label>
-                            <form:select type="radio" name="organization" items="${allInstitutions}" path="institution"/>
+                            <form:radiobutton id="orgazization" name="organization" value="${institution.id}"
+                                         path="institution"/>
                             <span class="checkbox radio"></span>
                             <span class="description">
-                  <div class="title">Fundacja “${institution.name}”</div>
-                  <div class="subtitle">
-                    Cel i misja: ${institution.description}
-                  </div>
-                </span>
+                                <div class="title">Fundacja “${institution.name}”</div>
+                                <div class="subtitle"> Cel i misja: ${institution.description}</div>
+                            </span>
                         </label>
                     </div>
                 </c:forEach>
+
                 <div class="form-group form-group--buttons">
                     <button type="button" class="btn prev-step">Wstecz</button>
                     <button type="button" class="btn next-step">Dalej</button>
@@ -185,7 +180,7 @@
                         <div class="form-group form-group--inline">
                             <label>
                                 Uwagi dla kuriera
-                                <form:textarea name="more_info" rows="5" path="pickUpComment"></form:textarea>
+                                <form:textarea name="more_info" rows="5" path="pickUpComment"/>
                             </label>
                         </div>
                     </div>
@@ -206,8 +201,7 @@
                         <ul>
                             <li>
                                 <span class="icon icon-bag"></span>
-                                <span class="summary--text"
-                                >4 worki ubrań w dobrym stanie dla dzieci</span
+                                <span id="quantity" class="summary--text">4 worki ubrań w dobrym stanie dla dzieci</span
                                 >
                             </li>
 
@@ -251,41 +245,8 @@
     </div>
 </section>
 
-<footer>
-    <div class="contact">
-        <h2>Skontaktuj się z nami</h2>
-        <h3>Formularz kontaktowy</h3>
-        <form class="form--contact">
-            <div class="form-group form-group--50">
-                <input type="text" name="name" placeholder="Imię"/>
-            </div>
-            <div class="form-group form-group--50">
-                <input type="text" name="surname" placeholder="Nazwisko"/>
-            </div>
 
-            <div class="form-group">
-            <textarea
-                    name="message"
-                    placeholder="Wiadomość"
-                    rows="1"
-            ></textarea>
-            </div>
-
-            <button class="btn" type="submit">Wyślij</button>
-        </form>
-    </div>
-    <div class="bottom-line">
-        <span class="bottom-line--copy">Copyright &copy; 2018</span>
-        <div class="bottom-line--icons">
-            <a href="#" class="btn btn--small"
-            ><img src="images/icon-facebook.svg"
-            /></a>
-            <a href="#" class="btn btn--small"
-            ><img src="images/icon-instagram.svg"
-            /></a>
-        </div>
-    </div>
-</footer>
+<%@include file="footer.jsp" %>
 
 <script src="<c:url value="resources/js/app.js"/>"></script>
 </body>

@@ -29,4 +29,21 @@ public class CategoryService {
 
         return x;
     }
+
+    public List<Category> getCategories(String[] categoriesId){
+        List<Category> result = new ArrayList<>();
+        List<Category> all = categoryRepository.findAll();
+        for (String s : categoriesId) {
+            for (Category c : all) {
+                if (c.getId().equals(Long.valueOf(s))) {
+                    result.add(c);
+                }
+            }
+        }
+
+
+        return result;
+    }
+
+
 }
