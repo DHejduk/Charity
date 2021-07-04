@@ -9,11 +9,11 @@
     <nav class="container container--70">
         <ul class="nav--actions">
             <li class="logged-user">
-                Witaj Agata
+                ${user}
                 <ul class="dropdown">
                     <li><a href="#">Profil</a></li>
                     <li><a href="#">Moje zbiórki</a></li>
-                    <li><a href="#">Wyloguj</a></li>
+                    <li><a href="/logout">Wyloguj</a></li>
                 </ul>
             </li>
         </ul>
@@ -85,8 +85,8 @@
                 <c:forEach items="${allCategories}" var="category">
                     <div class="form-group form-group--checkbox">
                         <label>
-                            <form:checkbox cssClass="checkbox" name="categories" path="category" value="${category.id}"/>
-
+                            <form:checkbox cssClass="checkbox" name="categories" path="category"  value="${category.id}"/>
+                            <span class="checkbox"></span>
                             <span class="description">${category.name}</span>
                         </label>
                     </div>

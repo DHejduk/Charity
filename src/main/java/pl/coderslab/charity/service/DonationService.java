@@ -35,10 +35,6 @@ public class DonationService {
     }
 
     public void saveDonation(DonationDto donationDto, List<Category> categories1, Institution institution){
-
-
-
-
         Donation donation = new Donation();
 
         donation.setQuantity(donationDto.getQuantity());
@@ -52,6 +48,5 @@ public class DonationService {
 
         donationRepository.save(donation);
     }
-
 
 }
