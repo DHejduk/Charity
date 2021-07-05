@@ -25,7 +25,7 @@ public class UserRegistrationController {
     @PostMapping("/signup")
     public String processSignupForm(@ModelAttribute("userDto")UserDto userDto){
         boolean b = userService.userExists(userDto.getEmail());
-        if (!b || !userDto.getMatchingPassword().equals(userDto.getPassword())){
+        if (!b || !userDto.getMatchingPassword().equals(userDto.getPassword()) || userDto.getPassword().isEmpty() || userDto.getMatchingPassword().isEmpty()){
             return "redirect:/signup";
         }
         userService.createUser(userDto);

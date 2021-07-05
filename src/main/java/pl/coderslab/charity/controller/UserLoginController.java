@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import pl.coderslab.charity.model.dto.UserLoginDto;
+import pl.coderslab.charity.model.entity.User;
 import pl.coderslab.charity.security.MyUserDetailsService;
 import pl.coderslab.charity.service.UserService;
 
@@ -33,7 +34,7 @@ public class UserLoginController {
     @PostMapping("/login")
     public String processLogin(@ModelAttribute("userLogin") UserLoginDto userLoginDto) {
 
-        UserDetails userDetails = userDetailsService.loadUserByUsername(userLoginDto.getEmail());
+        User userDetails = userService.getUser();
 
         if (userDetails == null) {
             return "redirect:/login?error";
@@ -42,6 +43,6 @@ public class UserLoginController {
             return "redirect:/login?error";
         }
 
-        return "redirect:/donate";
+        return "redirect:/user/account";
     }
 }

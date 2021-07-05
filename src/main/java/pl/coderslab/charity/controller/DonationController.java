@@ -52,15 +52,25 @@ public class DonationController {
 
     @PostMapping("/donate")
     public String processForm(@ModelAttribute("donationDto")DonationDto donationDto){
-        String[] categories = donationDto.getCategory();
-        List<Category> categories1 = null;
-        if (categories != null){
-            categories1 = categoryService.getCategories(categories);
-        }
-        Institution institution = institutionService.findInstitution(donationDto.getInstitution());
+        // TODO : working
+//        String[] categories = donationDto.getCategory();
+//        List<Category> categories1 = null;
+//        if (categories != null){
+//            categories1 = categoryService.getCategories(categories);
+//        }
+//        Institution institution = institutionService.findInstitution(donationDto.getInstitution());
+//        donationService.saveDonation(donationDto,categories1,institution);
 
-        donationService.saveDonation(donationDto,categories1,institution);
+        // TODO : not working
+        System.out.println(donationDto.toString());
 
+
+
+        return "redirect:/confirmation";
+    }
+
+    @GetMapping("/confirmation")
+    public String showConfirm(){
         return "form-confirmation";
     }
 }

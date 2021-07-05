@@ -173,15 +173,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (this.currentStep===5){
                 const categories = [...document.querySelectorAll("input[name='categories']:checked")];
-                const quantity = document.querySelector("input[name='bags'][type='number']");
+                // const  quantity= document.querySelector("input[name='bags'][type='number']");
                 const organization =[...document.querySelectorAll("input[name='organization']")];
-                const street = document.querySelector("input[name='address'][type='text']");
+                // const street = document.querySelector("input[name='address'][type='text']");
                 const city = document.querySelector("input[name='city']").value;
-                const zipCode = document.querySelector("input[name='postcode']");
-                const phone = document.querySelector("input[name='phone']");
-                const date = document.querySelector("input[name='data'][type='date']");
-                const time = document.querySelector("input[name='time'][type='time']");
-                const info = document.querySelector("input[name='more_info']");
+                // const zipCode = document.querySelector("input[name='postcode']");
+                // const phone = document.querySelector("input[name='phone']");
+                // const date = document.querySelector("input[name='data'][type='date']");
+                // const time = document.querySelector("input[name='time'][type='time']");
+                // const info = document.querySelector("input[name='more_info']");
+
+                const quantity = document.getElementById('quantity').value;
+                const street = document.getElementById('street').value;
+                const zipCode = document.getElementById('zipCode').value;
+                const phone = document.getElementById('phone').value;
+                const date = document.getElementById('date').value;
+                const time = document.getElementById('time').value;
+                const info = document.getElementById('info').value;
+
+
                 console.log(categories)
                 console.log(quantity)
                 console.log(organization)
@@ -192,6 +202,16 @@ document.addEventListener("DOMContentLoaded", function () {
                 console.log(date)
                 console.log(time)
                 console.log(info)
+
+                let arrAddress = [...document.querySelectorAll(".summary .form-section--column li")];
+                arrAddress[0].innerText=street;
+                arrAddress[1].innerText=city;
+                arrAddress[2].innerText=zipCode;
+                arrAddress[3].innerText=phone;
+                arrAddress[4].innerText=date;
+                arrAddress[5].innerText=time;
+                arrAddress[6].innerText=info;
+
             }
 
 

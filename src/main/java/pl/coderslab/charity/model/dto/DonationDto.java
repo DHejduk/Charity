@@ -10,9 +10,11 @@ import java.util.List;
 
 @Data @RequiredArgsConstructor
 public class DonationDto {
-   private String[] category;
+     private List<CategoryDto> category;
+//   private String[] category;
     private Integer quantity;
-    private String institution;
+//    private String institution;
+    private InstitutionDto institution;
     private String street;
     private String city;
     private String zipCode;
