@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const tmp = document.querySelectorAll("input[type='hidden'][name='_category']")
+    const tmp = document.querySelectorAll("input[type='hidden'][name='_categories']")
     tmp.forEach(function (input){
         input.remove();
     })

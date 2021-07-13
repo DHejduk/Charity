@@ -21,32 +21,18 @@ public class DonationService {
 
 
     public Integer getQuantity(){
-        List<Donation> all = donationRepository.findAll();
-
-        return all.stream()
+        return donationRepository.findAll().stream()
                 .map(Donation::getQuantity)
                 .reduce(0, Integer::sum);
 
     }
 
     public Integer getNumberOfDonations(){
-        List<Donation> all = donationRepository.findAll();
-        return all.size();
+        return donationRepository.findAll().size();
     }
 
-    public void saveDonation(DonationDto donationDto, List<Category> categories1, Institution institution){
-        Donation donation = new Donation();
-
-        donation.setQuantity(donationDto.getQuantity());
-        donation.setCategories(categories1);
-        donation.setInstitution(institution);
-        donation.setStreet(donationDto.getStreet());
-        donation.setCity(donationDto.getCity());
-        donation.setPickUpDate(donationDto.getPickUpDate());
-        donation.setPickUpTime(donationDto.getPickUpTime());
-        donation.setPickUpComment(donationDto.getPickUpComment());
-
-        donationRepository.save(donation);
+    public void saveDonation(Donation donationDto){
+        donationRepository.save(donationDto);
     }
 
 }

@@ -44,9 +44,6 @@ public class UserService{
         User byEmail = userRepository.findByEmail(email);
         return byEmail == null;
     }
-//    public User findByUserNameAndPassword(String username, String password) {
-//        return userRepository.findByUserNameAndPassword(username,password);
-//    }
 
     public String encodePassword(String password) {
         return passwordEncoder.encoder().encode(password);

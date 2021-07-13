@@ -85,8 +85,7 @@
                 <c:forEach items="${allCategories}" var="category">
                     <div class="form-group form-group--checkbox">
                         <label>
-<%--                            <form:checkbox id="categories" cssClass="checkbox" name="categories" path="category"  value="${category.id}"/>--%>
-                            <form:checkbox id="categories" cssClass="checkbox" name="categories" path="category"  value="${category}"/>
+                            <form:checkbox id="categories" cssClass="checkbox" name="categories" path="categories"  value="${category}"/>
                             <span class="checkbox"></span>
                             <span class="description">${category.name}</span>
                         </label>
@@ -123,8 +122,7 @@
                 <c:forEach items="${allInstitutions}" var="institution">
                     <div class="form-group form-group--checkbox">
                         <label>
-<%--                            <form:radiobutton id="organization" name="organization" value="${institution.id}" path="institution"/>--%>
-                            <form:radiobutton id="organization" name="organization" value="${institution}" path="institution"/>
+                            <form:radiobutton id="organization" name="organization" value="${institution.id}" path="institution"/>
                             <span class="checkbox radio"></span>
                             <span class="description">
                                 <div class="title">Fundacja “${institution.name}”</div>
@@ -157,13 +155,13 @@
 
                         <div class="form-group form-group--inline">
                             <label>
-                                Kod pocztowy <form:input id="zipCode" type="text" name="postcode" path="zipCode"/>
+<%--                                Kod pocztowy <form:input id="zipCode" type="text" name="postcode" path="zipCode"/>--%>
                             </label>
                         </div>
 
                         <div class="form-group form-group--inline">
                             <label>
-                                Numer telefonu <form:input id="phone" type="phone" name="phone" path="phoneNumber"/>
+<%--                                Numer telefonu <form:input id="phone" type="phone" name="phone" path="phoneNumber"/>--%>
                             </label>
                         </div>
                     </div>

@@ -19,7 +19,7 @@ public class InstitutionService {
     @Autowired
     InstitutionRepository institutionRepository;
 
-    public List<InstitutionDto> getAllInstitutions() {
+    public List<Institution> getAllInstitutions() {
         List<Institution> allInstitutions = institutionRepository.findAllInstitutions();
         if (allInstitutions.isEmpty()){
             return null;
@@ -34,7 +34,7 @@ public class InstitutionService {
 //        institutionRepository.findAllInstitutions().stream()
 //                .map((e,s)->{e.getName()})
 
-        return x;
+        return allInstitutions;
     }
 
     public Institution findInstitution(String id){

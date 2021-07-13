@@ -44,28 +44,15 @@ public class DonationController {
         model
                 .addAttribute("allInstitutions", institutionService.getAllInstitutions())
                 .addAttribute("allCategories",categoryService.showAllCategories())
-                .addAttribute("donationDto", new DonationDto());
+                .addAttribute("donationDto", new Donation());
 
 
         return "form";
     }
 
     @PostMapping("/donate")
-    public String processForm(@ModelAttribute("donationDto")DonationDto donationDto){
-        // TODO : working
-//        String[] categories = donationDto.getCategory();
-//        List<Category> categories1 = null;
-//        if (categories != null){
-//            categories1 = categoryService.getCategories(categories);
-//        }
-//        Institution institution = institutionService.findInstitution(donationDto.getInstitution());
-//        donationService.saveDonation(donationDto,categories1,institution);
-
-        // TODO : not working
-        System.out.println(donationDto.toString());
-
-
-
+    public String processForm(@ModelAttribute("donationDto")Donation donationDto){
+        donationService.saveDonation(donationDto);
         return "redirect:/confirmation";
     }
 
