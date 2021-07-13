@@ -20,17 +20,11 @@ public class CategoryService {
     @Autowired
     CategoryRepository categoryRepository;
 
-    public List<CategoryDto> showAllCategories(){
-        List<Category> all = categoryRepository.findAll();
-        List<CategoryDto> x = new ArrayList<>();
-        for (Category c : all){
-            x.add(new CategoryDto(c.getId(), c.getName()));
-        }
-
-        return x;
+    public List<Category> showAllCategories() {
+        return categoryRepository.findAll();
     }
 
-    public List<Category> getCategories(String[] categoriesId){
+    public List<Category> getCategories(String[] categoriesId) {
         List<Category> result = new ArrayList<>();
         List<Category> all = categoryRepository.findAll();
         for (String s : categoriesId) {

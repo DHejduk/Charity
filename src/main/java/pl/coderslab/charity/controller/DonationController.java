@@ -1,4 +1,4 @@
-package pl.coderslab.charity;
+package pl.coderslab.charity.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.jms.JmsProperties;
@@ -11,9 +11,11 @@ import pl.coderslab.charity.model.dto.DonationDto;
 import pl.coderslab.charity.model.entity.Category;
 import pl.coderslab.charity.model.entity.Donation;
 import pl.coderslab.charity.model.entity.Institution;
+import pl.coderslab.charity.model.entity.User;
 import pl.coderslab.charity.service.CategoryService;
 import pl.coderslab.charity.service.DonationService;
 import pl.coderslab.charity.service.InstitutionService;
+import pl.coderslab.charity.service.UserService;
 
 import java.util.List;
 
@@ -25,29 +27,37 @@ public class DonationController {
     CategoryService categoryService;
     @Autowired
     DonationService donationService;
+    @Autowired
+    UserService userService;
+
 
     @GetMapping("/donate")
     public String showForm(Model model){
+        User user = userService.getUser();
+
+        if (user != null){
+            model.addAttribute("user", user.getEmail());
+        }else {
+            model.addAttribute("user", "Anonim");
+        }
+
         model
                 .addAttribute("allInstitutions", institutionService.getAllInstitutions())
                 .addAttribute("allCategories",categoryService.showAllCategories())
-                .addAttribute("donationDto", new DonationDto());
+                .addAttribute("donationDto", new Donation());
 
 
         return "form";
     }
 
     @PostMapping("/donate")
-    public String processForm(@ModelAttribute("donationDto")DonationDto donationDto){
-        String[] categories = donationDto.getCategory();
-        List<Category> categories1 = null;
-        if (categories != null){
-            categories1 = categoryService.getCategories(categories);
-        }
-        Institution institution = institutionService.findInstitution(donationDto.getInstitution());
+    public String processForm(@ModelAttribute("donationDto")Donation donationDto){
+        donationService.saveDonation(donationDto);
+        return "redirect:/confirmation";
+    }
 
-        donationService.saveDonation(donationDto,categories1,institution);
-
+    @GetMapping("/confirmation")
+    public String showConfirm(){
         return "form-confirmation";
     }
 }

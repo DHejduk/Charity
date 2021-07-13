@@ -9,17 +9,17 @@
     <nav class="container container--70">
         <ul class="nav--actions">
             <li class="logged-user">
-                Witaj Agata
+                ${user}
                 <ul class="dropdown">
-                    <li><a href="#">Profil</a></li>
+                    <li><a href="/user/account">Profil</a></li>
                     <li><a href="#">Moje zbiórki</a></li>
-                    <li><a href="#">Wyloguj</a></li>
+                    <li><a href="/logout">Wyloguj</a></li>
                 </ul>
             </li>
         </ul>
 
         <ul>
-            <li><a href="index.html" class="btn btn--without-border active">Start</a></li>
+            <li><a href="/" class="btn btn--without-border active">Start</a></li>
             <li><a href="index.html#steps" class="btn btn--without-border">O co chodzi?</a></li>
             <li><a href="index.html#about-us" class="btn btn--without-border">O nas</a></li>
             <li><a href="index.html#help" class="btn btn--without-border">Fundacje i organizacje</a></li>
@@ -85,8 +85,8 @@
                 <c:forEach items="${allCategories}" var="category">
                     <div class="form-group form-group--checkbox">
                         <label>
-                            <form:checkbox cssClass="checkbox" name="categories" path="category" value="${category.id}"/>
-
+                            <form:checkbox id="categories" cssClass="checkbox" name="categories" path="categories"  value="${category}"/>
+                            <span class="checkbox"></span>
                             <span class="description">${category.name}</span>
                         </label>
                     </div>
@@ -105,7 +105,7 @@
                 <div class="form-group form-group--inline">
                     <label>
                         Liczba 60l worków:
-                        <form:input type="number" name="bags" step="1" min="1" path="quantity"/>
+                        <form:input type="number"  id="quantity" name="bags" step="1" min="1" path="quantity"/>
                     </label>
                 </div>
 
@@ -122,8 +122,7 @@
                 <c:forEach items="${allInstitutions}" var="institution">
                     <div class="form-group form-group--checkbox">
                         <label>
-                            <form:radiobutton id="orgazization" name="organization" value="${institution.id}"
-                                         path="institution"/>
+                            <form:radiobutton id="organization" name="organization" value="${institution.id}" path="institution"/>
                             <span class="checkbox radio"></span>
                             <span class="description">
                                 <div class="title">Fundacja “${institution.name}”</div>
@@ -147,7 +146,7 @@
                     <div class="form-section--column">
                         <h4>Adres odbioru</h4>
                         <div class="form-group form-group--inline">
-                            <label> Ulica <form:input type="text" name="address" path="street"/> </label>
+                            <label> Ulica <form:input id="street" type="text" name="address" path="street"/> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
@@ -156,13 +155,13 @@
 
                         <div class="form-group form-group--inline">
                             <label>
-                                Kod pocztowy <form:input type="text" name="postcode" path="zipCode"/>
+<%--                                Kod pocztowy <form:input id="zipCode" type="text" name="postcode" path="zipCode"/>--%>
                             </label>
                         </div>
 
                         <div class="form-group form-group--inline">
                             <label>
-                                Numer telefonu <form:input type="phone" name="phone" path="phoneNumber"/>
+<%--                                Numer telefonu <form:input id="phone" type="phone" name="phone" path="phoneNumber"/>--%>
                             </label>
                         </div>
                     </div>
@@ -170,17 +169,17 @@
                     <div class="form-section--column">
                         <h4>Termin odbioru</h4>
                         <div class="form-group form-group--inline">
-                            <label> Data <form:input type="date" name="data" path="pickUpDate"/> </label>
+                            <label> Data <form:input id="date" type="date" name="data" path="pickUpDate"/> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
-                            <label> Godzina <form:input type="time" name="time" path="pickUpTime"/> </label>
+                            <label> Godzina <form:input id="time" type="time" name="time" path="pickUpTime"/> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
                             <label>
                                 Uwagi dla kuriera
-                                <form:textarea name="more_info" rows="5" path="pickUpComment"/>
+                                <form:textarea id="info" name="more_info" rows="5" path="pickUpComment"/>
                             </label>
                         </div>
                     </div>
@@ -201,15 +200,12 @@
                         <ul>
                             <li>
                                 <span class="icon icon-bag"></span>
-                                <span id="quantity" class="summary--text">4 worki ubrań w dobrym stanie dla dzieci</span
-                                >
+                                <span id="quantity" class="summary--text">4  worki ubrań w dobrym stanie dla dzieci</span>
                             </li>
 
                             <li>
                                 <span class="icon icon-hand"></span>
-                                <span class="summary--text"
-                                >Dla fundacji "Mam marzenie" w Warszawie</span
-                                >
+                                <span class="summary--text">Dla fundacji "Mam marzenie" w Warszawie</span>
                             </li>
                         </ul>
                     </div>
